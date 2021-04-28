@@ -37,6 +37,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+    
+      <dependency>
+        <groupId>com.intenthq</groupId>
+        <artifactId>gander_2.12</artifactId>
+        <version>1.4</version>
+      </dependency>
     </dependencies>
 
     <build>
