@@ -26,10 +26,10 @@ public class DemoApplication {
 
         // Registering the Driver
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-         // Getting the connection
-         String mysqlUrl = "jdbc:mysql://localhost/thehub";
-         Connection con = DriverManager.getConnection(mysqlUrl, "root", "password");
-         System.out.println("Connection established......");
+        // Getting the connection
+        String mysqlUrl = "jdbc:mysql://localhost/thehub";
+        Connection con = DriverManager.getConnection(mysqlUrl, "root", "password");
+        System.out.println("Connection established......");
 
         final String url = "https://thehub.io/jobs?countryCode=DK";
 
@@ -55,7 +55,7 @@ public class DemoApplication {
 
                     writer.close();
 
-                    //Inserting values
+                    // Inserting values
                     String query = "INSERT INTO jobs(jobscol) VALUES (?)";
 
                     PreparedStatement pstmt = con.prepareStatement(query);
