@@ -1,8 +1,13 @@
 package com.javascraper.demo;
 
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import com.intenthq.gander.utils.JSoup;
 
@@ -15,9 +20,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
 
         SpringApplication.run(DemoApplication.class, args);
+
+        // Registering the Driver
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+         // Getting the connection
+         String mysqlUrl = "jdbc:mysql://localhost/thehub";
+         Connection con = DriverManager.getConnection(mysqlUrl, "root", "password");
+         System.out.println("Connection established......");
 
         final String url = "https://thehub.io/jobs?countryCode=DK";
 
@@ -26,14 +38,14 @@ public class DemoApplication {
             BufferedWriter writer = null;
             // String ticker = null;
 
-            for (Element row : document.select("content")) {
+            for (Element row : document.select("div.my-10")) {
 
-                if (row.select("content").text().equals("")) {
+                if (row.select("div.my-10").text().equals("")) {
                     continue;
                 } else {
                     writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test2.txt"));
 
-                    final String ticker = row.select("content").text();
+                    final String ticker = row.select("div.my-10").text();
 
                     writer.write(ticker);
 
@@ -43,17 +55,21 @@ public class DemoApplication {
 
                     writer.close();
 
+                    //Inserting values
+                    String query = "INSERT INTO jobs(jobscol) VALUES (?)";
+
+                    PreparedStatement pstmt = con.prepareStatement(query);
+
+                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test2.txt");
+
+                    pstmt.setCharacterStream(1, reader);
+
+                    pstmt.execute();
+
+                    System.out.println("Data inserted......");
+
                 }
 
-                // try {
-                // writer = new BufferedWriter(new
-                // FileWriter("C:/Users/Abdul/Documents/test2.txt"));
-
-                // writer.write(ticker);
-
-                // } catch (IOException e) {
-                // e.printStackTrace();
-                // }
             }
 
             // System.out.println(document.outerHtml());
