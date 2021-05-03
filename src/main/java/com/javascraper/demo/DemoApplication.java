@@ -49,10 +49,6 @@ public class DemoApplication {
 
                     writer.write(ticker);
 
-                    // writer.write(document.body().text());
-
-                    // System.out.println(ticker);
-
                     writer.close();
 
                     // Inserting values
@@ -83,10 +79,6 @@ public class DemoApplication {
 
                     writer.write(ticker);
 
-                    // writer.write(document.body().text());
-
-                    // System.out.println(ticker);
-
                     writer.close();
 
                     // Inserting values
@@ -95,6 +87,36 @@ public class DemoApplication {
                     PreparedStatement pstmt = con.prepareStatement(query);
 
                     FileReader reader = new FileReader("C:/Users/Abdul/Documents/test3.txt");
+
+                    pstmt.setCharacterStream(1, reader);
+
+                    pstmt.execute();
+
+                    System.out.println("Data inserted......");
+
+                }
+
+            }
+
+            for (Element row : document.select("div.bullet-inline-list")) {
+
+                if (row.select("div.bullet-inline-list").text().equals("")) {
+                    continue;
+                } else {
+                    writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test4.txt"));
+
+                    final String ticker = row.select("div.bullet-inline-list").text();
+
+                    writer.write(ticker);
+
+                    writer.close();
+
+                    // Inserting values
+                    String query = "INSERT INTO jobs_info(jobinfo) VALUES (?)";
+
+                    PreparedStatement pstmt = con.prepareStatement(query);
+
+                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test4.txt");
 
                     pstmt.setCharacterStream(1, reader);
 
