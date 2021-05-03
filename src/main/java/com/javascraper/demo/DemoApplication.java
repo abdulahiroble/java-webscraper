@@ -128,6 +128,36 @@ public class DemoApplication {
 
             }
 
+            for (Element row : document.select("li.nav-item")) {
+
+                if (row.select("li.nav-item").text().equals("")) {
+                    continue;
+                } else {
+                    writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test5.txt"));
+
+                    final String ticker = row.select("li.nav-item").text();
+
+                    writer.write(ticker);
+
+                    writer.close();
+
+                    // Inserting values
+                    String query = "INSERT INTO nav_info(navinfo) VALUES (?)";
+
+                    PreparedStatement pstmt = con.prepareStatement(query);
+
+                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test5.txt");
+
+                    pstmt.setCharacterStream(1, reader);
+
+                    pstmt.execute();
+
+                    System.out.println("Data inserted......");
+
+                }
+
+            }
+
             System.out.println(document.outerHtml());
         } catch (Exception ex) {
             ex.printStackTrace();
