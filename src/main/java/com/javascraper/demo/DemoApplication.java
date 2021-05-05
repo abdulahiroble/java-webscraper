@@ -27,8 +27,8 @@ public class DemoApplication {
         // Registering the Driver
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         // Getting the connection
-        String mysqlUrl = "jdbc:mysql://localhost/thehub";
-        Connection con = DriverManager.getConnection(mysqlUrl, "root", "password");
+        String mysqlUrl = "jdbc:mysql://3.236.216.244:3306/thehub?serverTimezone=UTC";
+        Connection con = DriverManager.getConnection(mysqlUrl, "user", "password");
         System.out.println("Connection established......");
 
         final String url = "https://thehub.io/jobs?countryCode=DK";
@@ -46,10 +46,7 @@ public class DemoApplication {
 
                     final String ticker = row.select("span.card-job-find-list__position").text();
 
-                    assert false;
-                    writer.write(ticker);
 
-                    writer.close();
 
                     // Inserting values
                     String query = "INSERT INTO jobs(jobscol) VALUES (?)";
@@ -76,10 +73,7 @@ public class DemoApplication {
 
                     final String ticker = row.select("label.custom-control-label").text();
 
-                    assert false;
-                    writer.write(ticker);
 
-                    writer.close();
 
                     // Inserting values
                     String query = "INSERT INTO roles(roles) VALUES (?)";
@@ -104,11 +98,6 @@ public class DemoApplication {
 //                    writer = new BufferedWriter(new FileWriter("test4.txt"));
 
                     final String ticker = row.select("div.bullet-inline-list").text();
-
-                    assert false;
-                    writer.write(ticker);
-
-                    writer.close();
 
                     // Inserting values
                     String query = "INSERT INTO jobs_info(jobinfo) VALUES (?)";
@@ -136,10 +125,6 @@ public class DemoApplication {
 
                     final String ticker = row.select("li.nav-item").text();
 
-                    assert false;
-                    writer.write(ticker);
-
-                    writer.close();
 
                     // Inserting values
                     String query = "INSERT INTO nav_info(navinfo) VALUES (?)";
