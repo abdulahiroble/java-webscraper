@@ -20,14 +20,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws IOException, SQLException {
 
         SpringApplication.run(DemoApplication.class, args);
 
         // Registering the Driver
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         // Getting the connection
-        String mysqlUrl = "jdbc:mysql://3.236.216.244:3306/thehub?serverTimezone=UTC";
+        String mysqlUrl = "jdbc:mysql://3.236.216.244:3306/thehub";
         Connection con = DriverManager.getConnection(mysqlUrl, "user", "password");
         System.out.println("Connection established......");
 
@@ -43,19 +43,22 @@ public class DemoApplication {
                 if (row.select("span.card-job-find-list__position").text().equals("")) {
                     continue;
                 } else {
+                    writer = new BufferedWriter(new FileWriter("test2.txt"));
 
                     final String ticker = row.select("span.card-job-find-list__position").text();
 
+                    writer.write(ticker);
 
+                    writer.close();
 
                     // Inserting values
                     String query = "INSERT INTO jobs(jobscol) VALUES (?)";
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
-//                    FileReader reader = new FileReader("test2.txt");
+                    FileReader reader = new FileReader("test2.txt");
 
-//                    pstmt.setCharacterStream(1, reader);
+                    pstmt.setCharacterStream(1, reader);
 
                     pstmt.execute();
 
@@ -70,17 +73,22 @@ public class DemoApplication {
                 if (row.select("label.custom-control-label").text().equals("")) {
                     continue;
                 } else {
+                    writer = new BufferedWriter(new FileWriter("test3.txt"));
 
                     final String ticker = row.select("label.custom-control-label").text();
 
+                    writer.write(ticker);
 
+                    writer.close();
 
                     // Inserting values
                     String query = "INSERT INTO roles(roles) VALUES (?)";
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
+                    FileReader reader = new FileReader("test3.txt");
 
+                    pstmt.setCharacterStream(1, reader);
 
                     pstmt.execute();
 
@@ -95,18 +103,22 @@ public class DemoApplication {
                 if (row.select("div.bullet-inline-list").text().equals("")) {
                     continue;
                 } else {
-//                    writer = new BufferedWriter(new FileWriter("test4.txt"));
+                    writer = new BufferedWriter(new FileWriter("test4.txt"));
 
                     final String ticker = row.select("div.bullet-inline-list").text();
+
+                    writer.write(ticker);
+
+                    writer.close();
 
                     // Inserting values
                     String query = "INSERT INTO jobs_info(jobinfo) VALUES (?)";
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
-//                    FileReader reader = new FileReader("test4.txt");
+                    FileReader reader = new FileReader("test4.txt");
 
-//                    pstmt.setCharacterStream(1, reader);
+                    pstmt.setCharacterStream(1, reader);
 
                     pstmt.execute();
 
@@ -121,19 +133,22 @@ public class DemoApplication {
                 if (row.select("li.nav-item").text().equals("")) {
                     continue;
                 } else {
-//                    writer = new BufferedWriter(new FileWriter("C:/Users/Magnus/Documents/test5.txt"));
+                    writer = new BufferedWriter(new FileWriter("test5.txt"));
 
                     final String ticker = row.select("li.nav-item").text();
 
+                    writer.write(ticker);
+
+                    writer.close();
 
                     // Inserting values
                     String query = "INSERT INTO nav_info(navinfo) VALUES (?)";
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
-//                    FileReader reader = new FileReader("C:/Users/Magnus/Documents/test5.txt");
+                    FileReader reader = new FileReader("test5.txt");
 
-//                    pstmt.setCharacterStream(1, reader);
+                    pstmt.setCharacterStream(1, reader);
 
                     pstmt.execute();
 
