@@ -20,7 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication {
 
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws SQLException {
 
         SpringApplication.run(DemoApplication.class, args);
 
@@ -43,10 +43,10 @@ public class DemoApplication {
                 if (row.select("span.card-job-find-list__position").text().equals("")) {
                     continue;
                 } else {
-                    writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test2.txt"));
 
                     final String ticker = row.select("span.card-job-find-list__position").text();
 
+                    assert false;
                     writer.write(ticker);
 
                     writer.close();
@@ -56,9 +56,9 @@ public class DemoApplication {
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
-                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test2.txt");
+//                    FileReader reader = new FileReader("test2.txt");
 
-                    pstmt.setCharacterStream(1, reader);
+//                    pstmt.setCharacterStream(1, reader);
 
                     pstmt.execute();
 
@@ -73,10 +73,10 @@ public class DemoApplication {
                 if (row.select("label.custom-control-label").text().equals("")) {
                     continue;
                 } else {
-                    writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test3.txt"));
 
                     final String ticker = row.select("label.custom-control-label").text();
 
+                    assert false;
                     writer.write(ticker);
 
                     writer.close();
@@ -86,9 +86,7 @@ public class DemoApplication {
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
-                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test3.txt");
 
-                    pstmt.setCharacterStream(1, reader);
 
                     pstmt.execute();
 
@@ -103,10 +101,11 @@ public class DemoApplication {
                 if (row.select("div.bullet-inline-list").text().equals("")) {
                     continue;
                 } else {
-                    writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test4.txt"));
+//                    writer = new BufferedWriter(new FileWriter("test4.txt"));
 
                     final String ticker = row.select("div.bullet-inline-list").text();
 
+                    assert false;
                     writer.write(ticker);
 
                     writer.close();
@@ -116,9 +115,9 @@ public class DemoApplication {
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
-                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test4.txt");
+//                    FileReader reader = new FileReader("test4.txt");
 
-                    pstmt.setCharacterStream(1, reader);
+//                    pstmt.setCharacterStream(1, reader);
 
                     pstmt.execute();
 
@@ -133,10 +132,11 @@ public class DemoApplication {
                 if (row.select("li.nav-item").text().equals("")) {
                     continue;
                 } else {
-                    writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test5.txt"));
+//                    writer = new BufferedWriter(new FileWriter("C:/Users/Magnus/Documents/test5.txt"));
 
                     final String ticker = row.select("li.nav-item").text();
 
+                    assert false;
                     writer.write(ticker);
 
                     writer.close();
@@ -146,9 +146,9 @@ public class DemoApplication {
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
-                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test5.txt");
+//                    FileReader reader = new FileReader("C:/Users/Magnus/Documents/test5.txt");
 
-                    pstmt.setCharacterStream(1, reader);
+//                    pstmt.setCharacterStream(1, reader);
 
                     pstmt.execute();
 
