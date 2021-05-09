@@ -98,14 +98,14 @@ public class DemoApplication {
 
             }
 
-            for (Element row : document.select("div.bullet-inline-list")) {
+            for (Element row : document.select("div.bullet-inline-list span")) {
 
-                if (row.select("div.bullet-inline-list").text().equals("")) {
+                if (row.select("span").text().equals("")) {
                     continue;
                 } else {
                     writer = new BufferedWriter(new FileWriter("test4.txt"));
 
-                    final String ticker = row.select("div.bullet-inline-list").text();
+                    final String ticker = row.select("span").text();
 
                     writer.write(ticker);
 
