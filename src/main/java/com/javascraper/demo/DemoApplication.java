@@ -52,7 +52,7 @@ public class DemoApplication {
                     writer.close();
 
                     // Inserting values
-                    String query = "INSERT INTO jobs(jobscol) VALUES (?)";
+                    String query = "INSERT INTO jobs(jobtitle) VALUES (?)";
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
@@ -68,85 +68,25 @@ public class DemoApplication {
 
             }
 
-            for (Element row : document.select("label.custom-control-label")) {
-
-                if (row.select("label.custom-control-label").text().equals("")) {
-                    continue;
-                } else {
-                    writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test3.txt"));
-
-                    final String ticker = row.select("label.custom-control-label").text();
-
-                    writer.write(ticker);
-
-                    writer.close();
-
-                    // Inserting values
-                    String query = "INSERT INTO roles(roles) VALUES (?)";
-
-                    PreparedStatement pstmt = con.prepareStatement(query);
-
-                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test3.txt");
-
-                    pstmt.setCharacterStream(1, reader);
-
-                    pstmt.execute();
-
-                    System.out.println("Data inserted......");
-
-                }
-
-            }
-
             for (Element row : document.select("div.bullet-inline-list span")) {
 
-                if (row.select("span").text().equals("")) {
+                if (row.select("span:nth-child(1)").text().equals("")) {
                     continue;
                 } else {
                     writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test4.txt"));
 
-                    final String ticker = row.select("span").text();
+                    final String ticker = row.select("span:nth-child(1)").text();
 
                     writer.write(ticker);
 
                     writer.close();
 
                     // Inserting values
-                    String query = "INSERT INTO jobs_info(jobinfo) VALUES (?)";
+                    String query = "INSERT INTO jobs(company) VALUES (?)";
 
                     PreparedStatement pstmt = con.prepareStatement(query);
 
                     FileReader reader = new FileReader("C:/Users/Abdul/Documents/test4.txt");
-
-                    pstmt.setCharacterStream(1, reader);
-
-                    pstmt.execute();
-
-                    System.out.println("Data inserted......");
-
-                }
-
-            }
-
-            for (Element row : document.select("li.nav-item")) {
-
-                if (row.select("li.nav-item").text().equals("")) {
-                    continue;
-                } else {
-                    writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test5.txt"));
-
-                    final String ticker = row.select("li.nav-item").text();
-
-                    writer.write(ticker);
-
-                    writer.close();
-
-                    // Inserting values
-                    String query = "INSERT INTO nav_info(navinfo) VALUES (?)";
-
-                    PreparedStatement pstmt = con.prepareStatement(query);
-
-                    FileReader reader = new FileReader("C:/Users/Abdul/Documents/test5.txt");
 
                     pstmt.setCharacterStream(1, reader);
 
