@@ -27,6 +27,12 @@ public class Jobs {
         this.company = company;
     }
 
+    public Jobs(int idjobs, String jobtitle, String company) {
+        this.jobtitle = jobtitle;
+        this.company = company;
+        this.idjobs = idjobs;
+    }
+
     public int getidjobs() {
         return idjobs;
     }
