@@ -16,11 +16,30 @@ public class Jobs {
     @Column(name = "idjobs")
     private int idjobs;
 
-    @Column(name = "jobscol")
-    private String jobscol;
+    @Column(name = "jobtitle")
+    private String jobtitle;
 
-    public Jobs(String jobscol) {
-        this.jobscol = jobscol;
+    @Column(name = "company")
+    private String company;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "jobtype")
+    private String jobtype;
+
+    public Jobs(String jobtitle, String company, String location, String jobtype) {
+        this.jobtitle = jobtitle;
+        this.company = company;
+        this.location = location;
+        this.jobtype = jobtype;
+    }
+
+    public Jobs(int idjobs, String jobtitle, String company, String location) {
+        this.jobtitle = jobtitle;
+        this.company = company;
+        this.idjobs = idjobs;
+        this.location = location;
     }
 
     public int getidjobs() {
@@ -40,12 +59,36 @@ public class Jobs {
         this.idjobs = idjobs;
     }
 
-    public String getJobscol() {
-        return jobscol;
+    public String getjobtitle() {
+        return jobtitle;
     }
 
-    public void setJobscol(String jobscol) {
-        this.jobscol = jobscol;
+    public void setjobtitle(String jobtitle) {
+        this.jobtitle = jobtitle;
+    }
+
+    public String getcompany() {
+        return company;
+    }
+
+    public void setcompany(String company) {
+        this.company = company;
+    }
+
+    public String getlocation() {
+        return location;
+    }
+
+    public void setlocation(String location) {
+        this.location = location;
+    }
+
+    public String getjobtype() {
+        return jobtype;
+    }
+
+    public void setjobtype(String jobtype) {
+        this.jobtype = jobtype;
     }
 
 }
