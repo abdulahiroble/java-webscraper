@@ -22,15 +22,20 @@ public class Jobs {
     @Column(name = "company")
     private String company;
 
-    public Jobs(String jobtitle, String company) {
+    @Column(name = "location")
+    private String location;
+
+    public Jobs(String jobtitle, String company, String location) {
         this.jobtitle = jobtitle;
         this.company = company;
+        this.location = location;
     }
 
-    public Jobs(int idjobs, String jobtitle, String company) {
+    public Jobs(int idjobs, String jobtitle, String company, String location) {
         this.jobtitle = jobtitle;
         this.company = company;
         this.idjobs = idjobs;
+        this.location = location;
     }
 
     public int getidjobs() {
@@ -64,6 +69,14 @@ public class Jobs {
 
     public void setcompany(String company) {
         this.company = company;
+    }
+
+    public String getlocation() {
+        return location;
+    }
+
+    public void setlocation(String location) {
+        this.location = location;
     }
 
 }
