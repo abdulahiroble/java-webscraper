@@ -27,8 +27,8 @@ public class DemoApplication {
         // Registering the Driver
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         // Getting the connection
-        String mysqlUrl = "jdbc:mysql://localhost/thehub";
-        Connection con = DriverManager.getConnection(mysqlUrl, "root", "password");
+        String mysqlUrl = "jdbc:mysql://3.236.216.244:3306/thehub";
+        Connection con = DriverManager.getConnection(mysqlUrl, "user", "password");
         System.out.println("Connection established......");
 
         final String url = "https://thehub.io/jobs?countryCode=DK";
@@ -43,7 +43,6 @@ public class DemoApplication {
 
             for (Element row : document.select("div.media-item__content")) {
 
-                writer = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test2.txt"));
 
                 writer2 = new BufferedWriter(new FileWriter("C:/Users/Abdul/Documents/test4.txt"));
 
@@ -55,7 +54,6 @@ public class DemoApplication {
 
                 String ticker2 = row.select("div.bullet-inline-list span:nth-child(1)").text();
 
-                String ticker3 = row.select("div.bullet-inline-list span:nth-child(2)").text();
 
                 String ticker4 = row.select("div.bullet-inline-list span:nth-child(3)").text();
 
@@ -65,13 +63,13 @@ public class DemoApplication {
 
                 writer2.close();
 
-                writer3.write(ticker3);
+
 
                 writer3.close();
 
                 writer4.write(ticker4);
 
-                writer4.close();
+
 
                 writer.close();
 
@@ -82,7 +80,7 @@ public class DemoApplication {
 
                 FileReader reader = new FileReader("C:/Users/Abdul/Documents/test2.txt");
 
-                FileReader reader2 = new FileReader("C:/Users/Abdul/Documents/test4.txt");
+
 
                 FileReader reader3 = new FileReader("C:/Users/Abdul/Documents/test5.txt");
 
@@ -94,7 +92,6 @@ public class DemoApplication {
 
                 pstmt.setCharacterStream(3, reader3);
 
-                pstmt.setCharacterStream(4, reader4);
 
                 pstmt.execute();
 
@@ -103,7 +100,6 @@ public class DemoApplication {
                 System.out.println("Data inserted......");
             }
 
-            System.out.println("Data inserted......");
 
             System.out.println(document.outerHtml());
         } catch (Exception ex) {
