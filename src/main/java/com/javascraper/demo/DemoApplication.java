@@ -27,8 +27,8 @@ public class DemoApplication {
         // Registering the Driver
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         // Getting the connection
-        String mysqlUrl = "jdbc:mysql://3.227.211.226:3306/thehub";
-        Connection con = DriverManager.getConnection(mysqlUrl, "root", "password");
+        String mysqlUrl = "jdbc:mysql://3.227.211.226:3306/mydb";
+        Connection con = DriverManager.getConnection(mysqlUrl, "root", "mypassword");
         System.out.println("Connection established......");
 
         final String url = "https://thehub.io/jobs?countryCode=DK";
