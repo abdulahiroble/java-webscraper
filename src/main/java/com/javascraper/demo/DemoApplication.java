@@ -29,7 +29,7 @@ public class DemoApplication {
         // Getting the connection
         String mysqlUrl = "jdbc:mysql://3.238.87.35:3306/mydb";
         Connection con = DriverManager.getConnection(mysqlUrl, "root", "mypassword");
-        System.out.println("Connection established......");
+        System.out.println("Connection established.......");
 
         final String url = "https://thehub.io/jobs?countryCode=DK";
 
